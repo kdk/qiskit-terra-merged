@@ -1,0 +1,87 @@
+digraph G {
+subgraph cluster_0 {
+fontname=helvetica;
+label="[0] ";
+labeljust=l;
+1 [color=cyan, fontname=helvetica, label=SetLayout, shape=rectangle];
+2 [color=black, fontname=helvetica, fontsize=10, label=layout, shape=ellipse, style=solid];
+2 -> 1;
+}
+
+subgraph cluster_3 {
+fontname=helvetica;
+label="[1] condition";
+labeljust=l;
+4 [color=red, fontname=helvetica, label=TrivialLayout, shape=rectangle];
+5 [color=black, fontname=helvetica, fontsize=10, label=coupling_map, shape=ellipse, style=solid];
+5 -> 4;
+1 -> 4;
+}
+
+subgraph cluster_6 {
+fontname=helvetica;
+label="[2] ";
+labeljust=l;
+7 [color=red, fontname=helvetica, label=FullAncillaAllocation, shape=rectangle];
+8 [color=black, fontname=helvetica, fontsize=10, label=coupling_map, shape=ellipse, style=solid];
+8 -> 7;
+4 -> 7;
+}
+
+subgraph cluster_9 {
+fontname=helvetica;
+label="[3] ";
+labeljust=l;
+10 [color=pink, fontname=helvetica, label=EnlargeWithAncilla, shape=rectangle];
+7 -> 10;
+}
+
+subgraph cluster_11 {
+fontname=helvetica;
+label="[4] ";
+labeljust=l;
+12 [color=blue, fontname=helvetica, label=Unroller, shape=rectangle];
+13 [color=black, fontname=helvetica, fontsize=10, label=basis, shape=ellipse, style=dashed];
+13 -> 12;
+14 [color=black, fontname=helvetica, fontsize=10, label=target, shape=ellipse, style=dashed];
+14 -> 12;
+10 -> 12;
+}
+
+subgraph cluster_15 {
+fontname=helvetica;
+label="[5] ";
+labeljust=l;
+16 [color=green, fontname=helvetica, label=CheckMap, shape=rectangle];
+17 [color=black, fontname=helvetica, fontsize=10, label=coupling_map, shape=ellipse, style=solid];
+17 -> 16;
+12 -> 16;
+}
+
+subgraph cluster_18 {
+fontname=helvetica;
+label="[6] do_while";
+labeljust=l;
+19 [color=blue, fontname=helvetica, label=BarrierBeforeFinalMeasurements, shape=rectangle];
+16 -> 19;
+}
+
+subgraph cluster_20 {
+fontname=helvetica;
+label="[7] ";
+labeljust=l;
+21 [color=blue, fontname=helvetica, label=CXDirection, shape=rectangle];
+22 [color=black, fontname=helvetica, fontsize=10, label=coupling_map, shape=ellipse, style=solid];
+22 -> 21;
+19 -> 21;
+}
+
+subgraph cluster_23 {
+fontname=helvetica;
+label="[8] ";
+labeljust=l;
+24 [color=grey, fontname=helvetica, label=RemoveResetInZeroState, shape=rectangle];
+21 -> 24;
+}
+
+}

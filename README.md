@@ -1,97 +1,137 @@
-![Image](https://raw.githubusercontent.com/Qiskit/qiskit/master/images/qiskit_header.png)
+# Qiskit Terra
+[![License](https://img.shields.io/github/license/Qiskit/qiskit-terra.svg?style=popout-square)](https://opensource.org/licenses/Apache-2.0)<!--- long-description-skip-begin -->[![Release](https://img.shields.io/github/release/Qiskit/qiskit-terra.svg?style=popout-square)](https://github.com/Qiskit/qiskit-terra/releases)[![Downloads](https://img.shields.io/pypi/dm/qiskit-terra.svg?style=popout-square)](https://pypi.org/project/qiskit-terra/)[![Coverage Status](https://coveralls.io/repos/github/Qiskit/qiskit-terra/badge.svg?branch=main)](https://coveralls.io/github/Qiskit/qiskit-terra?branch=main)[![Minimum rustc 1.61.0](https://img.shields.io/badge/rustc-1.61.0+-blue.svg)](https://rust-lang.github.io/rfcs/2495-min-rust-version.html)<!--- long-description-skip-end -->
 
-[![License](https://img.shields.io/github/license/Qiskit/qiskit.svg?)](https://opensource.org/licenses/Apache-2.0)
-![Build Status](https://github.com/Qiskit/qiskit/actions/workflows/main.yml/badge.svg?branch=master)
-![Build Status](https://github.com/Qiskit/qiskit/actions/workflows/docs.yml/badge.svg?branch=master)
-[![](https://img.shields.io/github/release/Qiskit/qiskit.svg)](https://github.com/Qiskit/qiskit/releases)
-[![Downloads](https://pepy.tech/badge/qiskit)](https://pypi.org/project/qiskit/)
-[![DOI](https://zenodo.org/badge/161550823.svg)](https://zenodo.org/badge/latestdoi/161550823)
+**Qiskit** is an open-source framework for working with noisy quantum computers at the level of pulses, circuits, and algorithms.
 
-**Qiskit** is an open-source SDK for working with quantum computers at the level of circuits, algorithms, and application modules.
+This library is the core component of Qiskit, **Terra**, which contains the building blocks for creating
+and working with quantum circuits, programs, and algorithms. It also contains a compiler that supports
+different quantum computers and a common interface for running programs on different quantum computer architectures.
 
-Qiskit is made up of elements that work together to enable quantum computing. This is a simple meta-package to install the elements of Qiskit altogether.
+For more details on how to use Qiskit you can refer to the documentation located here:
+
+https://qiskit.org/documentation/
+
 
 ## Installation
 
-The best way of installing `qiskit` is by using `pip`:
+We encourage installing Qiskit via ``pip``. The following command installs the core Qiskit components, including Terra.
 
 ```bash
-$ pip install qiskit
+pip install qiskit
 ```
 
-See [install](https://qiskit.org/documentation/getting_started.html) Qiskit for detailed instructions, how to use virtual environments, and
-build from source standalone versions of the individual Qiskit elements and components.
+Pip will handle all dependencies automatically and you will always install the latest (and well-tested) version.
 
-## Qiskit Packaging
+To install from source, follow the instructions in the [documentation](https://qiskit.org/documentation/contributing_to_qiskit.html#install-install-from-source-label).
 
-The Qiskit project used to be made up of many components. However, in the future the Qiskit metapackage will only install [**Qiskit Terra**](https://github.com/Qiskit/qiskit-terra):
+## Creating Your First Quantum Program in Qiskit Terra
 
-| Build   | Version | Contribute |
-| ---     | --- | --- |
-| [**Qiskit Terra**](https://github.com/Qiskit/qiskit-terra) | [![](https://img.shields.io/github/release/Qiskit/qiskit-terra.svg?)](https://github.com/Qiskit/qiskit-terra/releases)  | [![](https://img.shields.io/github/forks/Qiskit/qiskit-terra.svg?)](https://github.com/Qiskit/qiskit-terra) |
+Now that Qiskit is installed, it's time to begin working with Qiskit. To do this
+we create a `QuantumCircuit` object to define a basic quantum program.
 
-<table>
-  <tr>
-    <td colspan="3" align="center">:warning: WARNING :warning:</br> <b>For the time being, two other packages are installed, but these components will be removed from the metapackage in a future release.</b></td>
-  </tr>
-<tr>
-<th>Build</th>
-<th>Version</th>
-<th>Contribute</th>
-</tr>
-<tr>
-<td><a href="https://github.com/Qiskit/qiskit-aer"><strong>Qiskit Aer</strong></a></td>
-<td><a href="https://github.com/Qiskit/qiskit-aer/releases"><img src="https://camo.githubusercontent.com/7b4ebed2975693dc2d18233e49b7f9141838c1e86f22ac36f465fcd3886821b6/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f72656c656173652f5169736b69742f7169736b69742d6165722e7376673f" alt="" data-canonical-src="https://img.shields.io/github/release/Qiskit/qiskit-aer.svg?"></a></td>
-<td><a href="https://github.com/Qiskit/qiskit-aer"><img src="https://camo.githubusercontent.com/ced831707852701ae4c21b1455d6c2d2a03fa54dffe09fcf5208970112023a05/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f666f726b732f5169736b69742f7169736b69742d6165722e7376673f" alt="" data-canonical-src="https://img.shields.io/github/forks/Qiskit/qiskit-aer.svg?"></a></td>
-</tr>
-<tr>
-<td><a href="https://github.com/Qiskit/qiskit-ibmq-provider"><strong>Qiskit IBM Quantum Provider</strong></a></td>
-<td><a href="https://github.com/Qiskit/qiskit-ibmq-provider/releases"><img src="https://camo.githubusercontent.com/daa12aee2f03d2d310bd6ad1a5c5babe99b038fc08ad9f0309f5e1c7420c9ffe/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f72656c656173652f5169736b69742f7169736b69742d69626d712d70726f76696465722e7376673f" alt="" data-canonical-src="https://img.shields.io/github/release/Qiskit/qiskit-ibmq-provider.svg?"></a></td>
-<td><a href="https://github.com/Qiskit/qiskit-ibmq-provider"><img src="https://camo.githubusercontent.com/49f1938883f91358a594feeddecdd59b3188a353a9a20721a6fefcd64c32f6ce/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f666f726b732f5169736b69742f7169736b69742d69626d712d70726f76696465722e7376673f" alt="" data-canonical-src="https://img.shields.io/github/forks/Qiskit/qiskit-ibmq-provider.svg?"></a></td>
-</tr>
-</table>
+```python
+from qiskit import QuantumCircuit
+qc = QuantumCircuit(2, 2)
+qc.h(0)
+qc.cx(0, 1)
+qc.measure([0,1], [0,1])
+```
 
-### Optional components
+This simple example makes an entangled state, also called a [Bell state](https://qiskit.org/textbook/ch-gates/multiple-qubits-entangled-states.html#3.2-Entangled-States-).
 
-These components are part of the Qiskit ecosystem but are built on top of
-`qiskit` and are not installed by default with the meta-package. You can either
-install them manually, as an optional extra
-(ie `pip install "qiskit[finance,experiments]"`), or all together with
-`pip install "qiskit[all]"`.
+Once you've made your first quantum circuit, you can then simulate it.
+To do this, first we need to compile your circuit for the target backend we're going to run
+on. In this case we are leveraging the built-in `BasicAer` simulator. However, this
+simulator is primarily for testing and is limited in performance and functionality (as the name
+implies). You should consider more sophisticated simulators, such as [`qiskit-aer`](https://github.com/Qiskit/qiskit-aer/),
+for any real simulation work.
 
-| Build | Version | Contribute |
-| ---   | --- | --- |
-| [**Qiskit Optimization**](https://github.com/Qiskit/qiskit-optimization) | [![](https://img.shields.io/github/release/Qiskit/qiskit-optimization.svg?)](https://github.com/Qiskit/qiskit-optimization/releases) | [![](https://img.shields.io/github/forks/Qiskit/qiskit-optimization.svg?)](https://github.com/Qiskit/qiskit-optimization) |
-| [**Qiskit Finance**](https://github.com/Qiskit/qiskit-finance) |  [![](https://img.shields.io/github/release/Qiskit/qiskit-finance.svg?)](https://github.com/Qiskit/qiskit-finance/releases) | [![](https://img.shields.io/github/forks/Qiskit/qiskit-finance.svg?)](https://github.com/Qiskit/qiskit-finance) |
-| [**Qiskit Machine Learning**](https://github.com/Qiskit/qiskit-machine-learning) | [![](https://img.shields.io/github/release/Qiskit/qiskit-machine-learning.svg?)](https://github.com/Qiskit/qiskit-machine-learning/releases) | [![](https://img.shields.io/github/forks/Qiskit/qiskit-machine-learning.svg?)](https://github.com/Qiskit/qiskit-machine-learning) |
-| [**Qiskit Nature**](https://github.com/Qiskit/qiskit-nature) |  [![](https://img.shields.io/github/release/Qiskit/qiskit-nature.svg?)](https://github.com/Qiskit/qiskit-nature/releases) | [![](https://img.shields.io/github/forks/Qiskit/qiskit-nature.svg?)](https://github.com/Qiskit/qiskit-nature) |
-| [**Qiskit Experiments**](https://github.com/Qiskit/qiskit-experiments) |  [![](https://img.shields.io/github/release/Qiskit/qiskit-experiments.svg?)](https://github.com/Qiskit/qiskit-experiments/releases) | [![](https://img.shields.io/github/forks/Qiskit/qiskit-experiments.svg?)](https://github.com/Qiskit/qiskit-experiments) |
+```python
+from qiskit import transpile
+from qiskit.providers.basicaer import QasmSimulatorPy
+backend_sim = QasmSimulatorPy()
+transpiled_qc = transpile(qc, backend_sim)
+```
 
-### Using quantum services
+After compiling the circuit we can then run this on the ``backend`` object with:
 
-If you are interested in using quantum services (i.e. using a real quantum
-computer, not a simulator) you can look at the Qiskit Partners program for
-partner organizations that have provider packages available for their offerings:
+```python
+result = backend_sim.run(transpiled_qc).result()
+print(result.get_counts(qc))
+```
 
-https://qiskit.org/documentation/partners/
+The output from this execution will look similar to this:
+
+```python
+{'00': 513, '11': 511}
+```
+
+For further examples of using Qiskit you can look at the example scripts in **examples/python**. You can start with
+[using_qiskit_terra_level_0.py](examples/python/using_qiskit_terra_level_0.py) and working up in the levels. Also
+you can refer to the tutorials in the documentation here:
+
+https://qiskit.org/documentation/tutorials.html
+
+
+### Executing your code on a real quantum chip
+
+You can also use Qiskit to execute your code on a **real quantum processor**.
+Qiskit provides an abstraction layer that lets users run quantum circuits on hardware from any
+vendor that provides an interface to their systems through Qiskit. Using these ``providers`` you can run any Qiskit code against
+real quantum computers. Some examples of published provider packages for running on real hardware are:
+
+* https://github.com/Qiskit/qiskit-ibmq-provider
+* https://github.com/Qiskit-Partners/qiskit-ionq
+* https://github.com/Qiskit-Partners/qiskit-aqt-provider
+* https://github.com/qiskit-community/qiskit-braket-provider
+* https://github.com/qiskit-community/qiskit-quantinuum-provider
+* https://github.com/rigetti/qiskit-rigetti
+
+<!-- This is not an exhasutive list, and if you maintain a provider package please feel free to open a PR to add new providers -->
+
+You can refer to the documentation of these packages for further instructions
+on how to get access and use these systems.
 
 ## Contribution Guidelines
 
-If you'd like to contribute to Qiskit, please take a look at our
-[contribution guidelines](https://qiskit.org/documentation/contributing_to_qiskit.html). This project adheres to Qiskit's [code of conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+If you'd like to contribute to Qiskit Terra, please take a look at our
+[contribution guidelines](CONTRIBUTING.md). This project adheres to Qiskit's [code of conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
-We use [GitHub issues](https://github.com/Qiskit/qiskit/issues) for tracking requests and bugs. Please use our [Slack](https://qisk.it/join-slack) for discussion and simple questions. For questions that are more suited for a forum we use the Qiskit tag in the [Stack Exchange](https://quantumcomputing.stackexchange.com/questions/tagged/qiskit).
+We use [GitHub issues](https://github.com/Qiskit/qiskit-terra/issues) for tracking requests and bugs. Please
+[join the Qiskit Slack community](https://qisk.it/join-slack)
+and use our [Qiskit Slack channel](https://qiskit.slack.com) for discussion and simple questions.
+For questions that are more suited for a forum we use the `qiskit` tag in the [Stack Exchange](https://quantumcomputing.stackexchange.com/questions/tagged/qiskit).
 
 ## Next Steps
 
-Now you're set up and ready to check out our
+Now you're set up and ready to check out some of the other examples from our
 [Qiskit Tutorials](https://github.com/Qiskit/qiskit-tutorials) repository.
 
 ## Authors and Citation
 
-Qiskit is the work of many people who contribute to the project at
-different levels. If you use Qiskit, please cite as per the included
-[BibTeX file](Qiskit.bib).
+Qiskit Terra is the work of [many people](https://github.com/Qiskit/qiskit-terra/graphs/contributors) who contribute
+to the project at different levels. If you use Qiskit, please cite as per the included [BibTeX file](https://github.com/Qiskit/qiskit/blob/master/Qiskit.bib).
+
+## Changelog and Release Notes
+
+The changelog for a particular release is dynamically generated and gets
+written to the release page on Github for each release. For example, you can
+find the page for the `0.9.0` release here:
+
+https://github.com/Qiskit/qiskit-terra/releases/tag/0.9.0
+
+The changelog for the current release can be found in the releases tab:
+[![Releases](https://img.shields.io/github/release/Qiskit/qiskit-terra.svg?style=popout-square)](https://github.com/Qiskit/qiskit-terra/releases)
+The changelog provides a quick overview of notable changes for a given
+release.
+
+Additionally, as part of each release detailed release notes are written to
+document in detail what has changed as part of a release. This includes any
+documentation on potential breaking changes on upgrade and new features.
+For example, you can find the release notes for the `0.9.0` release in the
+Qiskit documentation here:
+
+https://qiskit.org/documentation/release_notes.html#terra-0-9
 
 ## License
 
